@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './src/scripts/index.js'
+    main: './src/components/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -39,7 +39,7 @@ module.exports = {
           },
           'postcss-loader'
         ]
-      },
+      }
     ]
   },
   plugins: [
@@ -47,7 +47,9 @@ module.exports = {
       template: './src/index.html'
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css'
+    }),
 
   ]
 }
