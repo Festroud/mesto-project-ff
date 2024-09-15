@@ -11,29 +11,23 @@ export function closePopup(popup) {
 }
 
 // Функция для инициализации обработчиков событий
-export function initModalHandlers() {
-  // Находим все модальные окна
-  const modals = document.querySelectorAll('.popup');
-
-  modals.forEach(modal => {
-    // Находим кнопку закрытия попапа
-    const closeButton = modal.querySelector('.popup__close');
-
-    // Вешаем обработчик закрытия на кнопку
-    closeButton.addEventListener('click', () => {
-      closePopup(modal);
-    });
-
-    // Вешаем обработчик закрытия на оверлей
-    modal.addEventListener('click', (evt) => {
-      if (evt.target === modal) {
-        closePopup(modal);
+export function initModalHandlers(popups) {
+  popups.forEach(popup => {
+    const closeButton = popup.querySelector('.popup__close');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        closePopup(popup);
+      });
+    }
+    popup.addEventListener('click', (evt) => {
+      if (evt.target === popup) {
+        closePopup(popup);
       }
     });
   });
 }
 
-// Закрытие попапа по нажатии клавиши Esc
+// Закрытие попапа по нажатию клавиши Esc
 function handlePopupOnEsc(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_is-opened');
