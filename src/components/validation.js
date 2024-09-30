@@ -62,7 +62,7 @@ export function enableValidation(config) {
 
   formList.forEach(formElement => {
     formElement.addEventListener('submit', evt => {
-      evt.preventDefault(); // Отключаем стандартное поведение формы
+      evt.preventDefault();
   });
       setEventListeners(formElement, config);
   });
